@@ -1,20 +1,293 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Your Name</title>
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      padding: 50px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Portfolio</title>
+<meta name="description" content="[Your Name] — [your title / discipline]. Selected work in software, design, and 3D.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Your Name</h1>
-  <p>VR Developer | 3D | Hardware</p>
 
-  <h2>Projects</h2>
-  <p>Coming soon...</p>
+<div class="grain"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__mark">
+    <span class="nav__bracket">[</span>YN<span class="nav__bracket">]</span>
+  </a>
+  <nav class="nav__links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#contact" class="nav__cta">Say hello</a>
+  <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__inner">
+    <p class="eyebrow"><span class="eyebrow__dot"></span>Portfolio&nbsp;/&nbsp;2026</p>
+    <h1 class="hero__title">
+      Building things<br>
+      that hold up<br>
+      under <span class="ink">scrutiny.</span>
+    </h1>
+    <p class="hero__sub">
+      I'm [Your Name], a [your title — e.g. "design engineer"] working across
+      product, interactive 3D, and the space in between. Five projects,
+      picked apart below.
+    </p>
+    <div class="hero__actions">
+      <a href="#work" class="btn btn--primary">
+        <span>View the work</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#contact" class="btn btn--ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero__coords" aria-hidden="true">N 34.69° / E 135.42°</div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="work" id="work">
+  <div class="section-head">
+    <p class="section-head__label">01 — Selected Work</p>
+    <h2 class="section-head__title">Five projects, closely examined.</h2>
+  </div>
+
+  <div class="work__body">
+
+    <!-- rail -->
+    <div class="rail" role="tablist" aria-label="Projects">
+
+      <button class="rail__item is-active" role="tab" aria-selected="true" aria-controls="panel-1" data-tab="1">
+        <span class="rail__index">01</span>
+        <span class="rail__meta">
+          <span class="rail__name">[Project One]</span>
+          <span class="rail__cat">Web Application</span>
+        </span>
+        <span class="rail__bracket" aria-hidden="true"></span>
+      </button>
+
+      <button class="rail__item" role="tab" aria-selected="false" aria-controls="panel-2" data-tab="2">
+        <span class="rail__index">02</span>
+        <span class="rail__meta">
+          <span class="rail__name">[Project Two]</span>
+          <span class="rail__cat">Mobile / iOS</span>
+        </span>
+        <span class="rail__bracket" aria-hidden="true"></span>
+      </button>
+
+      <button class="rail__item" role="tab" aria-selected="false" aria-controls="panel-3" data-tab="3">
+        <span class="rail__index">03</span>
+        <span class="rail__meta">
+          <span class="rail__name">[Project Three]</span>
+          <span class="rail__cat">3D / WebGL</span>
+        </span>
+        <span class="rail__bracket" aria-hidden="true"></span>
+      </button>
+
+      <button class="rail__item" role="tab" aria-selected="false" aria-controls="panel-4" data-tab="4">
+        <span class="rail__index">04</span>
+        <span class="rail__meta">
+          <span class="rail__name">[Project Four]</span>
+          <span class="rail__cat">Design System</span>
+        </span>
+        <span class="rail__bracket" aria-hidden="true"></span>
+      </button>
+
+      <button class="rail__item" role="tab" aria-selected="false" aria-controls="panel-5" data-tab="5">
+        <span class="rail__index">05</span>
+        <span class="rail__meta">
+          <span class="rail__name">[Project Five]</span>
+          <span class="rail__cat">Data / Tooling</span>
+        </span>
+        <span class="rail__bracket" aria-hidden="true"></span>
+      </button>
+
+    </div>
+
+    <!-- panels -->
+    <div class="panels">
+
+      <article class="panel is-active" id="panel-1" role="tabpanel">
+        <div class="panel__gallery">
+          <div class="shot shot--lg" data-img="1"><span class="shot__label">01 / Hero shot</span></div>
+          <div class="shot" data-img="2"><span class="shot__label">02 / Detail</span></div>
+          <div class="shot" data-img="3"><span class="shot__label">03 / Detail</span></div>
+        </div>
+        <div class="panel__info">
+          <div class="panel__tags">
+            <span class="tag">Replace with tags</span><span class="tag">React</span><span class="tag">Node</span>
+          </div>
+          <h3 class="panel__title">[Project One Name]</h3>
+          <p class="panel__desc">
+            One or two sentences on the problem this solved, who it was for,
+            and the part you're proudest of. Keep it specific — numbers and
+            outcomes read better than adjectives.
+          </p>
+          <div class="panel__links">
+            <a href="#" class="link-arrow">Live site →</a>
+            <a href="#" class="link-arrow">Source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="panel-2" role="tabpanel" hidden>
+        <div class="panel__gallery">
+          <div class="shot shot--lg" data-img="1"><span class="shot__label">01 / Hero shot</span></div>
+          <div class="shot" data-img="2"><span class="shot__label">02 / Detail</span></div>
+          <div class="shot" data-img="3"><span class="shot__label">03 / Detail</span></div>
+        </div>
+        <div class="panel__info">
+          <div class="panel__tags">
+            <span class="tag">Swift</span><span class="tag">SwiftUI</span>
+          </div>
+          <h3 class="panel__title">[Project Two Name]</h3>
+          <p class="panel__desc">
+            One or two sentences on the problem this solved, who it was for,
+            and the part you're proudest of.
+          </p>
+          <div class="panel__links">
+            <a href="#" class="link-arrow">App Store →</a>
+            <a href="#" class="link-arrow">Case study →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="panel-3" role="tabpanel" hidden>
+        <div class="panel__gallery panel__gallery--3d">
+          <div class="viewer" id="viewer3d">
+            <canvas id="viewerCanvas"></canvas>
+            <div class="viewer__hint">Drag to orbit · Scroll to zoom</div>
+            <div class="viewer__badge">Live WebGL — swap in your own model</div>
+          </div>
+        </div>
+        <div class="panel__info">
+          <div class="panel__tags">
+            <span class="tag">Three.js</span><span class="tag">WebGL</span><span class="tag">Blender</span>
+          </div>
+          <h3 class="panel__title">[Project Three Name]</h3>
+          <p class="panel__desc">
+            An interactive 3D piece — drag to orbit, scroll to zoom. Replace
+            the placeholder geometry in <code>script.js</code> with a loaded
+            glTF model of your own work.
+          </p>
+          <div class="panel__links">
+            <a href="#" class="link-arrow">Live demo →</a>
+            <a href="#" class="link-arrow">Source →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="panel-4" role="tabpanel" hidden>
+        <div class="panel__gallery">
+          <div class="shot shot--lg" data-img="1"><span class="shot__label">01 / Hero shot</span></div>
+          <div class="shot" data-img="2"><span class="shot__label">02 / Detail</span></div>
+          <div class="shot" data-img="3"><span class="shot__label">03 / Detail</span></div>
+        </div>
+        <div class="panel__info">
+          <div class="panel__tags">
+            <span class="tag">Figma</span><span class="tag">Tokens</span>
+          </div>
+          <h3 class="panel__title">[Project Four Name]</h3>
+          <p class="panel__desc">
+            One or two sentences on the problem this solved, who it was for,
+            and the part you're proudest of.
+          </p>
+          <div class="panel__links">
+            <a href="#" class="link-arrow">Storybook →</a>
+            <a href="#" class="link-arrow">Case study →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="panel-5" role="tabpanel" hidden>
+        <div class="panel__gallery">
+          <div class="shot shot--lg" data-img="1"><span class="shot__label">01 / Hero shot</span></div>
+          <div class="shot" data-img="2"><span class="shot__label">02 / Detail</span></div>
+          <div class="shot" data-img="3"><span class="shot__label">03 / Detail</span></div>
+        </div>
+        <div class="panel__info">
+          <div class="panel__tags">
+            <span class="tag">Python</span><span class="tag">CLI</span>
+          </div>
+          <h3 class="panel__title">[Project Five Name]</h3>
+          <p class="panel__desc">
+            One or two sentences on the problem this solved, who it was for,
+            and the part you're proudest of.
+          </p>
+          <div class="panel__links">
+            <a href="#" class="link-arrow">Repo →</a>
+            <a href="#" class="link-arrow">Docs →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="section-head">
+    <p class="section-head__label">02 — About</p>
+    <h2 class="section-head__title">A little more context.</h2>
+  </div>
+  <div class="about__body">
+    <p class="about__text">
+      Replace this with two or three short paragraphs: what you work on,
+      how you think about the craft, and what you're looking for next.
+      Keep the voice plain and specific — the work above should do most
+      of the convincing.
+    </p>
+    <div class="about__skills">
+      <div class="skill-group">
+        <p class="skill-group__label">Engineering</p>
+        <p class="skill-group__list">TypeScript · React · Node · Python</p>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group__label">3D / Graphics</p>
+        <p class="skill-group__list">Three.js · WebGL · Blender</p>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group__label">Design</p>
+        <p class="skill-group__list">Figma · Design Systems · Prototyping</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="contact__inner">
+    <p class="section-head__label">03 — Contact</p>
+    <h2 class="contact__title">Let's build<br>something.</h2>
+    <a href="mailto:you@example.com" class="contact__email">you@example.com</a>
+    <div class="contact__socials">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">X / Twitter</a>
+    </div>
+  </div>
+  <footer class="footer">
+    <span>© 2026 [Your Name]</span>
+    <span>Built with black, burnt orange, and too much attention to spacing.</span>
+  </footer>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
