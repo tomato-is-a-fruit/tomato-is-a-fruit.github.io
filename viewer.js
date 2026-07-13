@@ -34,11 +34,11 @@ function createViewer(wrapId, emptyId, modelPath){
 
     scene.add(new THREE.HemisphereLight(0xffffff, 0x2a2f36, 1.1));
 
-    const key = new THREE.DirectionalLight(0xffffff, 2.2);
+    const key = new THREE.DirectionalLight(0xffffff, 3.0);
     key.position.set(4, 6, 4);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0x88aaff, 0.6);
+    const fill = new THREE.DirectionalLight(0x88aaff, 1.2);
     fill.position.set(-4, -2, -3);
     scene.add(fill);
 
@@ -90,7 +90,8 @@ function createViewer(wrapId, emptyId, modelPath){
   const loader = new GLTFLoader();
 
   const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/'); 
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+  dracoLoader.setDecoderConfig({ type: 'js' });
   // Google-hosted decoder (easy + works)
 
   loader.setDRACOLoader(dracoLoader);
@@ -101,8 +102,17 @@ function createViewer(wrapId, emptyId, modelPath){
     model.rotation.x = -Math.PI / 2;
 
     model.traverse(n => {
-      if (n.isMesh){ n.castShadow = false; n.receiveShadow = false; }
-    });
+    if (n.isMesh){
+      n.castShadow = false;
+      n.receiveShadow = false;
+
+      if (n.material) {
+        n.material.metalness = 0.1;
+        n.material.roughness = 0.6;
+        n.material.needsUpdate = true;
+      }
+    }
+});
 
     scene.add(model);
     frame(model);
