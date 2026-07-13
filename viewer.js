@@ -2,9 +2,8 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-// Point these at your .glb files (relative path or full URL)
-const MODEL_PATH_PROJECT_1 = './public/LHRCustomScreen.glb';
-const MODEL_PATH_PROJECT_3 = './public/Cryostat_TLA.glb';
+const MODEL_PATH_PROJECT_1 = '/public/LHRCustomScreen.glb';
+const MODEL_PATH_PROJECT_3 = '/public/Cryostat_TLA.glb';
 
 function createViewer(wrapId, emptyId, modelPath){
   const wrap = document.getElementById(wrapId);
@@ -87,7 +86,6 @@ function createViewer(wrapId, emptyId, modelPath){
     new GLTFLoader().load(path, (gltf) => {
       model = gltf.scene;
 
-      // Board comes in standing on edge - lay it flat on the grid.
       model.rotation.x = -Math.PI / 2;
 
       model.traverse(n => {
