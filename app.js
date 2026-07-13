@@ -71,7 +71,7 @@ function splitViewerImageBlock(wrapId, emptyId, hint, tag){
       </div>
       <div class="split-bottom">
         <span class="media-tag">${tag}</span>
-        <img alt="" style="display:none">
+        <img alt="CustDisp" style="public/CustomDisplay.png">
         <div class="media-empty">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
           <span>No image set</span>
