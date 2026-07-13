@@ -53,6 +53,33 @@ function viewerBlock(wrapId, emptyId, hint){
     </div>`;
 }
 
+// split panel: 3D viewer fills the top half, an image slot fills the bottom half.
+// wrapId/emptyId must match what viewer.js looks for. Set the <img> src in the
+// bottom half to add your own picture, then remove its inline display:none.
+function splitViewerImageBlock(wrapId, emptyId, hint, tag){
+  return `
+    <div class="proj-media split-media">
+      <div class="split-top">
+        <div class="viewer-wrap" id="${wrapId}">
+          <div class="viewer-empty" id="${emptyId}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.27 6.96L12 12l8.73-5.04M12 22.08V12"/></svg>
+            <b>No model loaded</b>
+            <span>${hint}</span>
+          </div>
+          <div class="viewer-hint">drag to orbit · scroll to zoom</div>
+        </div>
+      </div>
+      <div class="split-bottom">
+        <span class="media-tag">${tag}</span>
+        <img alt="" style="display:none">
+        <div class="media-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
+          <span>No image set</span>
+        </div>
+      </div>
+    </div>`;
+}
+
 // project image - set the src on the <img> tag below to swap in your own picture,
 // and remove the inline style="display:none" once you do
 function mediaBlock(tag){
@@ -97,7 +124,7 @@ stage.innerHTML = `
 
   <div class="slide" data-index="1">
     <div class="project-slide">
-      ${viewerBlock('viewerWrap', 'viewerEmpty', 'Set MODEL_PATH_PROJECT_1 in viewer.js to point at your .glb file.')}
+      ${splitViewerImageBlock('viewerWrap', 'viewerEmpty', 'Set MODEL_PATH_PROJECT_1 in viewer.js to point at your .glb file.', 'Image')}
       <div class="proj-body">
         <span class="eyebrow">01 — Featured</span>
         <div class="proj-title" contenteditable="true" spellcheck="false">Project One</div>

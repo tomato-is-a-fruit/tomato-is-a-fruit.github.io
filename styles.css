@@ -1,4 +1,4 @@
-  :root{
+:root{
     --bg-app:#F1F3F4;
     --bg-toolbar:#FFFFFF;
     --border:#E3E5E8;
@@ -250,6 +250,30 @@
     background:transparent; color:var(--text-3); display:flex; align-items:center; justify-content:center;
   }
   .add-tool-btn:hover{ background:#F1F3F4; color:var(--text-2); }
+
+  /* --- split media: 3D viewer on top half, image on bottom half --- */
+  .split-media{
+    flex-direction:column; align-items:stretch; justify-content:stretch; padding:0;
+  }
+  .split-top{ flex:1; min-height:0; position:relative; overflow:hidden; }
+  .split-top .viewer-wrap{ position:absolute; inset:0; }
+  .split-bottom{
+    flex:1; min-height:0; position:relative; overflow:hidden;
+    border-top:1px solid var(--border); background:#F8F9FA;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .split-bottom img{ width:100%; height:100%; object-fit:cover; }
+  .split-bottom .media-empty{
+    display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--text-3);
+    text-align:center; padding:14px;
+  }
+  .split-bottom .media-empty svg{ width:26px; height:26px; opacity:.55; }
+  .split-bottom .media-empty span{ font-size:11px; font-weight:500; }
+  .split-bottom .media-tag{
+    position:absolute; top:10px; left:10px; background:rgba(255,255,255,.92);
+    font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    color:var(--text-2); padding:3px 8px; border-radius:4px; z-index:1;
+  }
 
   /* --- 3D viewer slide (project 1) --- */
   .viewer-wrap{ width:100%; height:100%; position:relative; background:#14181d; }
