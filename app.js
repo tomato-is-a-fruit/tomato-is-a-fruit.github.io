@@ -56,7 +56,7 @@ function viewerBlock(wrapId, emptyId, hint){
 // split panel: 3D viewer fills the top half, an image slot fills the bottom half.
 // wrapId/emptyId must match what viewer.js looks for. Set the <img> src in the
 // bottom half to add your own picture, then remove its inline display:none.
-function splitViewerImageBlock(wrapId, emptyId, hint, tag){
+function splitViewerImageBlock(wrapId, emptyId, hint){
   return `
     <div class="proj-media split-media">
       <div class="split-top">
@@ -70,12 +70,7 @@ function splitViewerImageBlock(wrapId, emptyId, hint, tag){
         </div>
       </div>
       <div class="split-bottom">
-        <span class="media-tag">${tag}</span>
-        <img alt="CustDisp" style="public/CustomDisplay.png">
-        <div class="media-empty">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
-          <span>No image set</span>
-        </div>
+        <img alt="" src="public/project1-photo.jpg">
       </div>
     </div>`;
 }
@@ -124,7 +119,7 @@ stage.innerHTML = `
 
   <div class="slide" data-index="1">
     <div class="project-slide">
-      ${splitViewerImageBlock('viewerWrap', 'viewerEmpty', 'Set MODEL_PATH_PROJECT_1 in viewer.js to point at your .glb file.', 'Image')}
+      ${splitViewerImageBlock('viewerWrap', 'viewerEmpty', 'Set MODEL_PATH_PROJECT_1 in viewer.js to point at your .glb file.')}
       <div class="proj-body">
         <span class="eyebrow">01 — Featured</span>
         <div class="proj-title" contenteditable="true" spellcheck="false">Project One</div>
