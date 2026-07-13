@@ -21,6 +21,8 @@ function createViewer(wrapId, emptyId, modelPath){
     camera.position.set(2.5, 1.8, 2.5);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.5;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(wrap.clientWidth, wrap.clientHeight);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
