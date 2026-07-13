@@ -34,11 +34,11 @@ function createViewer(wrapId, emptyId, modelPath){
 
     scene.add(new THREE.HemisphereLight(0xffffff, 0x2a2f36, 1.1));
 
-    const key = new THREE.DirectionalLight(0xffffff, 3.0);
+    const key = new THREE.DirectionalLight(0xffffff, 2.6);
     key.position.set(4, 6, 4);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0x88aaff, 1.2);
+    const fill = new THREE.DirectionalLight(0x88aaff, 0.6);
     fill.position.set(-4, -2, -3);
     scene.add(fill);
 
