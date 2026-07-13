@@ -107,13 +107,11 @@ function createViewer(wrapId, emptyId, modelPath){
       n.receiveShadow = false;
 
       if (n.material) {
-        n.material.metalness = 0.5;
-        n.material.roughness = 0.25;
-        n.material.envMapIntensity = 1.2;
+        n.material.metalness = 0.1;
+        n.material.roughness = 0.6;
         n.material.needsUpdate = true;
       }
     }
-});
 });
 
     scene.add(model);
