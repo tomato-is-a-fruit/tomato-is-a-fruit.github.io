@@ -3,8 +3,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // Point these at your .glb files (relative path or full URL)
-const MODEL_PATH_PROJECT_1 = '';
-const MODEL_PATH_PROJECT_3 = '';
+const MODEL_PATH_PROJECT_1 = 'tomato-is-a-fruit.github.io/public/LHRCustomScreen.glb';
+const MODEL_PATH_PROJECT_3 = 'tomato-is-a-fruit.github.io/public/Cryostat TLA.glb';
 
 function createViewer(wrapId, emptyId, modelPath){
   const wrap = document.getElementById(wrapId);
