@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 const MODEL_PATH_PROJECT_1 = 'public/LHRCustomScreen.glb';
 const MODEL_PATH_PROJECT_3 = 'public/Cryostat_TLA.glb';
@@ -82,25 +83,36 @@ function createViewer(wrapId, emptyId, modelPath){
   }
 
   function load(path){
-    setupScene();
-    new GLTFLoader().load(path, (gltf) => {
-      model = gltf.scene;
+  setupScene();
 
-      model.rotation.x = -Math.PI / 2;
+  const loader = new GLTFLoader();
 
-      model.traverse(n => {
-        if (n.isMesh){ n.castShadow = false; n.receiveShadow = false; }
-      });
-      scene.add(model);
-      frame(model);
-      emptyState.style.display = 'none';
-    }, undefined, (err) => {
-      console.error('failed to load glb:', err);
-      emptyState.querySelector('b').textContent = 'Could not load model';
-      emptyState.querySelector('span').textContent = 'Check the model path in viewer.js and try again.';
-      emptyState.style.display = 'flex';
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/'); 
+  // Google-hosted decoder (easy + works)
+
+  loader.setDRACOLoader(dracoLoader);
+
+  loader.load(path, (gltf) => {
+    model = gltf.scene;
+
+    model.rotation.x = -Math.PI / 2;
+
+    model.traverse(n => {
+      if (n.isMesh){ n.castShadow = false; n.receiveShadow = false; }
     });
-  }
+
+    scene.add(model);
+    frame(model);
+    emptyState.style.display = 'none';
+
+  }, undefined, (err) => {
+    console.error('failed to load glb:', err);
+    emptyState.querySelector('b').textContent = 'Could not load model';
+    emptyState.querySelector('span').textContent = 'Check the model path in viewer.js and try again.';
+    emptyState.style.display = 'flex';
+  });
+}
 
   if (modelPath){
     load(modelPath);
