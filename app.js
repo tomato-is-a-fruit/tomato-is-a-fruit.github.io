@@ -70,7 +70,7 @@ function splitViewerImageBlock(wrapId, emptyId, hint){
         </div>
       </div>
       <div class="split-bottom">
-        <img alt="" src="public/project1-photo.jpg">
+        <img alt="" src="public/CustomDisplay.png">
       </div>
     </div>`;
 }
