@@ -1,6 +1,6 @@
 // slide data used for the sidebar thumbnails and nav counter
 const SLIDES = [
-  { id:'intro',    title:'Intro',                 grad:['#1A73E8','#34A853'] },
+  { id:'intro',    title:'Intro',                 grad:['#1A73E8','#bee2c7'] },
   { id:'project-1',title:'Project 1 · 3D Viewer',  grad:['#14181d','#2b3542'] },
   { id:'project-2',title:'Project 2',              grad:['#EA4335','#F9AB00'] },
   { id:'project-3',title:'Project 3',              grad:['#673AB7','#1A73E8'] },
@@ -123,7 +123,12 @@ stage.innerHTML = `
         <span class="eyebrow">01 — Longhorns Racing</span>
         <div class="proj-title" contenteditable="true" spellcheck="false">Custom Display-PCB</div>
         <div class="proj-role" contenteditable="true" spellcheck="false">Created to replace former factory-made racing equipment</div>
-        <div class="proj-desc" contenteditable="true" spellcheck="false">Describe this project here — the problem, your approach, and the outcome. The panel on the left renders your 3D model directly in the browser.</div>
+        <div class="proj-desc" contenteditable="true" spellcheck="false">- Reverse-engineered an STM32U5-based Riverdi display to enable development of a custom vehicle display system,
+decreased bill of materials cost by $850 and improved power consumption efficiency by 40%
+        <br> - Designed the schematic for a custom display PCB, utilizing OCTOSPI/SPI for external flash/DRAM
+communication, FDCAN for data acquisition, and LTDC for real-time graphics output
+        <br> - Developed a 12V buck-boost converter to drive the display backlight, ensuring stable operation under fluctuating
+automotive power conditions</div>
         <span class="proj-desc-label">Tools used</span>
         <div class="tools-row" id="tools-1">${editableTools(['Three.js','Blender','WebGL'])}</div>
       </div>
