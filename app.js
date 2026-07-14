@@ -97,21 +97,20 @@ stage.innerHTML = `
       <div class="intro-left">
         <div class="photo-circle">
           <!-- set src below to add a profile photo, then drop the display:none -->
-          <img alt="" style="display:none">
+          <img alt="" src="public/henryface.jpg">
           <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
         </div>
         <div class="name-pill" contenteditable="true" spellcheck="false">Henry Zhang</div>
-        <div class="intro-tagline" contenteditable="true" spellcheck="false">Product Designer &amp; Front-End Developer — building things people enjoy using.</div>
+        <div class="intro-tagline" contenteditable="true" spellcheck="false">I like food, <br> but also more professional interests in this site.</div>
       </div>
       <div class="intro-right">
         <span class="eyebrow">Portfolio</span>
-        <div class="intro-title" contenteditable="true" spellcheck="false">Hi, I'm <br>Your Name.</div>
-        <div class="intro-subtitle" contenteditable="true" spellcheck="false">Design · Development · 3D</div>
-        <div class="intro-desc" contenteditable="true" spellcheck="false">This is a short introduction. Insert your desired text here — talk about what you do, what you care about, and what visitors can expect to see across the following five projects.</div>
+        <div class="intro-title" contenteditable="true" spellcheck="false">Hi, I'm <br>Henry Zhang</div>
+        <div class="intro-subtitle" contenteditable="true" spellcheck="false">University of Texas @ Austin <br> BS in Electrical + Computer Engineering</div>
+        <div class="intro-desc" contenteditable="true" spellcheck="false">Outside of the professional world, I like to cook, play sports, go hiking, <br>and I'm also not short, which is pretty cool.</div>
         <div class="intro-links">
-          <span class="link-chip" contenteditable="true" spellcheck="false">email@example.com</span>
-          <span class="link-chip" contenteditable="true" spellcheck="false">linkedin.com/in/you</span>
-          <span class="link-chip" contenteditable="true" spellcheck="false">github.com/you</span>
+          <span class="link-chip" contenteditable="true" spellcheck="false">henry.zhang@utexas.edu</span>
+          <span class="link-chip" contenteditable="true" spellcheck="false">linkedin.com/in/hzhang-y</span>
         </div>
       </div>
     </div>
@@ -121,9 +120,9 @@ stage.innerHTML = `
     <div class="project-slide">
       ${splitViewerImageBlock('viewerWrap', 'viewerEmpty', 'Set MODEL_PATH_PROJECT_1 in viewer.js to point at your .glb file.')}
       <div class="proj-body">
-        <span class="eyebrow">01 — Featured</span>
-        <div class="proj-title" contenteditable="true" spellcheck="false">Project One</div>
-        <div class="proj-role" contenteditable="true" spellcheck="false">Interactive 3D Product Viewer</div>
+        <span class="eyebrow">01 — Longhorns Racing</span>
+        <div class="proj-title" contenteditable="true" spellcheck="false">Custom Display-PCB</div>
+        <div class="proj-role" contenteditable="true" spellcheck="false">Created to replace former factory-made racing equipment</div>
         <div class="proj-desc" contenteditable="true" spellcheck="false">Describe this project here — the problem, your approach, and the outcome. The panel on the left renders your 3D model directly in the browser.</div>
         <span class="proj-desc-label">Tools used</span>
         <div class="tools-row" id="tools-1">${editableTools(['Three.js','Blender','WebGL'])}</div>
