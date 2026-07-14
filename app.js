@@ -32,10 +32,7 @@ SLIDES.forEach((s, i) => {
 });
 
 function editableTools(defaults){
-  return defaults.map(t => `<span class="tool-chip" contenteditable="true" spellcheck="false">${t}</span>`).join('')
-    + `<button class="add-tool-btn" onclick="addTool(this)" title="Add tool">
-         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-       </button>`;
+  return defaults.map(t => `<span class="tool-chip" contenteditable="true" spellcheck="false">${t}</span>`).join('');
 }
 
 // 3D viewer panel - wrapId/emptyId must match what viewer.js looks for
@@ -130,7 +127,7 @@ communication, FDCAN for data acquisition, and LTDC for real-time graphics outpu
         <br> - Developed a 12V buck-boost converter to drive the display backlight, ensuring stable operation under fluctuating
 automotive power conditions</div>
         <span class="proj-desc-label">Tools used</span>
-        <div class="tools-row" id="tools-1">${editableTools(['Three.js','Blender','WebGL'])}</div>
+        <div class="tools-row" id="tools-1">${editableTools(['PCB/Hardware Design + Validation','STM32 MCU Interfacing','C/C++'])}</div>
       </div>
     </div>
     <div class="slide-num-mark">01 / 06</div>
