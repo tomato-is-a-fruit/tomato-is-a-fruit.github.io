@@ -72,13 +72,34 @@ function splitViewerImageBlock(wrapId, emptyId, hint){
     </div>`;
 }
 
-// project image - set the src on the <img> tag below to swap in your own picture,
-// and remove the inline style="display:none" once you do
 function mediaBlock(tag){
   return `
     <div class="proj-media">
       <span class="media-tag">${tag}</span>
-      <img alt="" style="display:none">
+      <img alt="" src="public/henryface.jpg">
+      <div class="media-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
+        <span>No image set</span>
+      </div>
+    </div>`;
+}
+
+function mediaBlock1(tag){
+  return `
+    <div class="proj-media">
+      <span class="media-tag">${tag}</span>
+      <img alt="" src="a">
+      <div class="media-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
+        <span>No image set</span>
+      </div>
+    </div>`;
+}
+function mediaBlock2(tag){
+  return `
+    <div class="proj-media">
+      <span class="media-tag">${tag}</span>
+      <img alt="" src="public/henryface.jpg">
       <div class="media-empty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
         <span>No image set</span>
@@ -138,7 +159,7 @@ automotive power conditions</div>
       ${mediaBlock('Image')}
       <div class="proj-body">
         <span class="eyebrow">02</span>
-        <div class="proj-title" contenteditable="true" spellcheck="false">Project Two</div>
+        <div class="proj-title" contenteditable="true" spellcheck="false">Voice Control Lamp Through Fast Fourier Transform</div>
         <div class="proj-role" contenteditable="true" spellcheck="false">Role or project type</div>
         <div class="proj-desc" contenteditable="true" spellcheck="false">This is a sample text. Insert your desired description here — what you built, why it mattered, and the impact it had.</div>
         <span class="proj-desc-label">Tools used</span>
@@ -153,7 +174,7 @@ automotive power conditions</div>
       ${viewerBlock('viewerWrap2', 'viewerEmpty2', 'Set MODEL_PATH_PROJECT_3 in viewer.js to point at your .glb file.')}
       <div class="proj-body">
         <span class="eyebrow">03</span>
-        <div class="proj-title" contenteditable="true" spellcheck="false">Project Three</div>
+        <div class="proj-title" contenteditable="true" spellcheck="false">CAD and PCB Design for a Quantum Computer</div>
         <div class="proj-role" contenteditable="true" spellcheck="false">Interactive 3D Model Viewer</div>
         <div class="proj-desc" contenteditable="true" spellcheck="false">Describe this project here — the problem, your approach, and the outcome. The panel on the left renders your 3D model directly in the browser.</div>
         <span class="proj-desc-label">Tools used</span>
@@ -165,10 +186,10 @@ automotive power conditions</div>
 
   <div class="slide" data-index="4">
     <div class="project-slide">
-      ${mediaBlock('Image')}
+      ${mediaBlock1('Image')}
       <div class="proj-body">
         <span class="eyebrow">04</span>
-        <div class="proj-title" contenteditable="true" spellcheck="false">Project Four</div>
+        <div class="proj-title" contenteditable="true" spellcheck="false">Lead Author of a 1D Quantum/Photonics Scattering Paper</div>
         <div class="proj-role" contenteditable="true" spellcheck="false">Role or project type</div>
         <div class="proj-desc" contenteditable="true" spellcheck="false">This is a sample text. Insert your desired description here — what you built, why it mattered, and the impact it had.</div>
         <span class="proj-desc-label">Tools used</span>
@@ -180,10 +201,10 @@ automotive power conditions</div>
 
   <div class="slide" data-index="5">
     <div class="project-slide">
-      ${mediaBlock('Image')}
+      ${mediaBlock2('Image')}
       <div class="proj-body">
         <span class="eyebrow">05</span>
-        <div class="proj-title" contenteditable="true" spellcheck="false">Project Five</div>
+        <div class="proj-title" contenteditable="true" spellcheck="false">3D Reconstruction through 2D Imaging Pipeline</div>
         <div class="proj-role" contenteditable="true" spellcheck="false">Role or project type</div>
         <div class="proj-desc" contenteditable="true" spellcheck="false">This is a sample text. Insert your desired description here — what you built, why it mattered, and the impact it had.</div>
         <span class="proj-desc-label">Tools used</span>
