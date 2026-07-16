@@ -219,7 +219,12 @@
     background:#F8F9FA; border-right:1px solid var(--border);
     display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
-  .proj-media img{ width:100%; height:100%; object-fit:cover; }
+  .proj-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
   .proj-media .media-empty{
     display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--text-3);
     text-align:center; padding:20px;
@@ -263,6 +268,23 @@
     display:flex; align-items:center; justify-content:center;
   }
   .split-bottom img{ width:100%; height:100%; object-fit:contain; }
+
+  /* --- video embed (click-to-play, minimal chrome) --- */
+  .video-embed{
+    position:relative; width:100%; height:100%; cursor:pointer; background:#000;
+  }
+  .video-embed img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .video-embed iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:none;
+  }
+  .video-play-btn{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:64px; height:64px; border-radius:50%;
+    background:rgba(0,0,0,.62); display:flex; align-items:center; justify-content:center;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .video-embed:hover .video-play-btn{ background:rgba(0,0,0,.8); transform:translate(-50%,-50%) scale(1.06); }
+  .video-play-btn svg{ width:24px; height:24px; fill:#fff; margin-left:3px; }
 
   /* --- 3D viewer slide (project 1) --- */
   .viewer-wrap{ width:100%; height:100%; position:relative; background:#14181d; }

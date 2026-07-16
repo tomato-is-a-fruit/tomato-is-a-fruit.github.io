@@ -76,7 +76,7 @@ function mediaBlock(tag){
   return `
     <div class="proj-media">
       <span class="media-tag">${tag}</span>
-      <img alt="" src="public/henryface.jpg">
+      <img alt="" src="public/ResearchPaper.png">
       <div class="media-empty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
         <span>No image set</span>
@@ -84,22 +84,68 @@ function mediaBlock(tag){
     </div>`;
 }
 
+// click-to-play YouTube embed. Shows a thumbnail + play button until clicked,
+// then swaps in the iframe. Uses youtube-nocookie.com + modestbranding to keep
+// branding minimal (YouTube's terms don't allow removing it entirely).
+// tag: small label shown top-left (e.g. "Video"); videoId: the YouTube video ID
+// (the part after v= in the URL, e.g. for youtube.com/watch?v=dQw4w9WgXcQ it's "dQw4w9WgXcQ")
+function videoBlock(tag, videoId){
+  return `
+    <div class="proj-media">
+      <span class="media-tag">${tag}</span>
+      <div class="video-embed" id="video-${videoId}" onclick="playVideo('${videoId}')">
+        <img alt="" src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg">
+        <div class="video-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+    </div>`;
+}
+
+function playVideo(videoId){
+  const container = document.getElementById(`video-${videoId}`);
+  if (!container) return;
+  container.innerHTML = `<iframe
+      src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&playsinline=1"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen></iframe>`;
+}
+window.playVideo = playVideo;
+
 function mediaBlock1(tag){
   return `
     <div class="proj-media">
       <span class="media-tag">${tag}</span>
-      <img alt="" src="public/ResearchPaper.jpg">
+
+      <img 
+        alt="Research Paper"
+        src="public/ResearchPaper.png"
+        style="
+          width:100%;
+          height:100%;
+          object-fit:cover;
+          object-position:center;
+          display:block;
+        "
+        onload="this.nextElementSibling.style.display='none'"
+      >
+
       <div class="media-empty">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="4" width="18" height="16" rx="2"/>
+          <circle cx="8.5" cy="10" r="1.5"/>
+          <path d="M21 16l-5-5-6 6"/>
+        </svg>
         <span>No image set</span>
       </div>
     </div>`;
 }
+
 function mediaBlock2(tag){
   return `
     <div class="proj-media">
       <span class="media-tag">${tag}</span>
-      <img alt="" src="public/ResearchPaper.jpg">
+      <img alt="" src="public/ResearchPaper.png">
       <div class="media-empty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
         <span>No image set</span>
@@ -156,7 +202,7 @@ automotive power conditions</div>
 
   <div class="slide" data-index="2">
     <div class="project-slide">
-      ${mediaBlock('Image')}
+      ${videoBlock('Video', 'QhCHJiEkqpw')}
       <div class="proj-body">
         <span class="eyebrow">02</span>
         <div class="proj-title" contenteditable="true" spellcheck="false">Voice Control Lamp Through Fast Fourier Transform</div>
