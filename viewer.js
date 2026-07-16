@@ -7,7 +7,7 @@ const MODEL_PATH_PROJECT_1 = 'public/LHRCustomScreen.glb';
 const MODEL_PATH_PROJECT_3 = 'public/Cryostat_TLA.glb';
 const MODEL_PATH_PROJECT_5 = 'public/cat_lying.glb';
 
-function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
+function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2, turntableSpeed = 0, showRotationDebug = false){
   const wrap = document.getElementById(wrapId);
   const emptyState = document.getElementById(emptyId);
   if (!wrap) return;
@@ -47,7 +47,10 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
     grid.position.y = -0.001;
     scene.add(grid);
 
+    const clock = new THREE.Clock();
     renderer.setAnimationLoop(() => {
+      const dt = clock.getDelta();
+      if (model) model.rotation.y += turntableSpeed * dt;
       controls.update();
       renderer.render(scene, camera);
     });
@@ -83,6 +86,37 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
     camera.updateProjectionMatrix();
     controls.target.set(0, 0.15, 0);
     controls.update();
+  }
+
+  function setupRotationDebugUI(){
+    const panel = document.createElement('div');
+    panel.style.cssText = 'position:absolute;bottom:44px;right:10px;background:rgba(0,0,0,.72);color:#fff;padding:10px;border-radius:8px;font:11px/1.4 monospace;z-index:20;display:flex;flex-direction:column;gap:6px;user-select:none;';
+    panel.innerHTML = `
+      <div id="rot-readout-${wrapId}" style="text-align:center;">x:0° y:0° z:0°</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;">
+        ${['x','y','z'].map(axis => `
+          <div style="display:flex;flex-direction:column;gap:3px;align-items:center;">
+            <button data-axis="${axis}" data-dir="1" style="width:100%;background:#2c333c;color:#fff;border:1px solid #444;border-radius:4px;padding:3px 0;cursor:pointer;">${axis.toUpperCase()}+</button>
+            <button data-axis="${axis}" data-dir="-1" style="width:100%;background:#2c333c;color:#fff;border:1px solid #444;border-radius:4px;padding:3px 0;cursor:pointer;">${axis.toUpperCase()}-</button>
+          </div>`).join('')}
+      </div>`;
+    wrap.appendChild(panel);
+
+    const readout = panel.querySelector(`#rot-readout-${wrapId}`);
+    const deg = r => Math.round(r * 180 / Math.PI);
+    const updateReadout = () => {
+      readout.textContent = `x:${deg(model.rotation.x)}° y:${deg(model.rotation.y)}° z:${deg(model.rotation.z)}°`;
+    };
+    updateReadout();
+
+    panel.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const axis = btn.dataset.axis;
+        const dir = Number(btn.dataset.dir);
+        model.rotation[axis] += dir * (Math.PI / 12); // 15 degree steps
+        updateReadout();
+      });
+    });
   }
 
   function load(path) {
@@ -121,6 +155,8 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
       frame(model);
 
       if (emptyState) emptyState.style.display = 'none';
+
+      if (showRotationDebug) setupRotationDebugUI();
     },
     undefined,
     (err) => {
@@ -144,4 +180,4 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
 
 createViewer('viewerWrap', 'viewerEmpty', MODEL_PATH_PROJECT_1);
 createViewer('viewerWrap2', 'viewerEmpty2', MODEL_PATH_PROJECT_3);
-createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, Math.PI);
+createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, Math.PI / 2, 0, true);
