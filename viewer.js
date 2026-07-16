@@ -144,4 +144,4 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
 
 createViewer('viewerWrap', 'viewerEmpty', MODEL_PATH_PROJECT_1);
 createViewer('viewerWrap2', 'viewerEmpty2', MODEL_PATH_PROJECT_3);
-createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, 0);
+createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, Math.PI);
