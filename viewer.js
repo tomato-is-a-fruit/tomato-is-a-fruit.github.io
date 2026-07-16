@@ -7,7 +7,7 @@ const MODEL_PATH_PROJECT_1 = 'public/LHRCustomScreen.glb';
 const MODEL_PATH_PROJECT_3 = 'public/Cryostat_TLA.glb';
 const MODEL_PATH_PROJECT_5 = 'public/cat_lying.glb';
 
-function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2, turntableSpeed = 0.25){
+function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2, turntableSpeed = 0){
   const wrap = document.getElementById(wrapId);
   const emptyState = document.getElementById(emptyId);
   if (!wrap) return;
@@ -147,4 +147,4 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2, turn
 
 createViewer('viewerWrap', 'viewerEmpty', MODEL_PATH_PROJECT_1);
 createViewer('viewerWrap2', 'viewerEmpty2', MODEL_PATH_PROJECT_3);
-createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, -Math.PI / 2);
+createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, Math.PI / 2);
