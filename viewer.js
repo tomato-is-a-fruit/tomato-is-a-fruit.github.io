@@ -7,7 +7,7 @@ const MODEL_PATH_PROJECT_1 = 'public/LHRCustomScreen.glb';
 const MODEL_PATH_PROJECT_3 = 'public/Cryostat_TLA.glb';
 const MODEL_PATH_PROJECT_5 = 'public/cat_lying.glb';
 
-function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
+function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2, turntableSpeed = 0.25){
   const wrap = document.getElementById(wrapId);
   const emptyState = document.getElementById(emptyId);
   if (!wrap) return;
@@ -47,7 +47,10 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
     grid.position.y = -0.001;
     scene.add(grid);
 
+    const clock = new THREE.Clock();
     renderer.setAnimationLoop(() => {
+      const dt = clock.getDelta();
+      if (model) model.rotation.y += turntableSpeed * dt;
       controls.update();
       renderer.render(scene, camera);
     });
@@ -144,4 +147,4 @@ function createViewer(wrapId, emptyId, modelPath, rotationX = -Math.PI / 2){
 
 createViewer('viewerWrap', 'viewerEmpty', MODEL_PATH_PROJECT_1);
 createViewer('viewerWrap2', 'viewerEmpty2', MODEL_PATH_PROJECT_3);
-createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, Math.PI);
+createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5, -Math.PI / 2);
