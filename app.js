@@ -7,9 +7,9 @@ const SLIDES = [
   { id:'project-4',title:'Project 4',              grad:['#0B8043','#34A853'] },
   { id:'project-5',title:'Project 5',              grad:['#F4511E','#F9AB00'] },
 ];
-
+ 
 let current = 0;
-
+ 
 const sidebar = document.getElementById('sidebar');
 SLIDES.forEach((s, i) => {
   const wrap = document.createElement('div');
@@ -30,11 +30,11 @@ SLIDES.forEach((s, i) => {
   wrap.querySelector('.thumb').addEventListener('click', () => goTo(i));
   sidebar.appendChild(wrap);
 });
-
+ 
 function editableTools(defaults){
   return defaults.map(t => `<span class="tool-chip" contenteditable="true" spellcheck="false">${t}</span>`).join('');
 }
-
+ 
 // 3D viewer panel - wrapId/emptyId must match what viewer.js looks for
 function viewerBlock(wrapId, emptyId, hint){
   return `
@@ -49,11 +49,11 @@ function viewerBlock(wrapId, emptyId, hint){
       </div>
     </div>`;
 }
-
+ 
 // split panel: 3D viewer fills the top half, an image slot fills the bottom half.
 // wrapId/emptyId must match what viewer.js looks for. Set the <img> src in the
 // bottom half to add your own picture, then remove its inline display:none.
-function splitViewerImageBlock(wrapId, emptyId, hint){
+function splitViewerImageBlock(wrapId, emptyId, hint, imgSrc='public/CustomDisplay.png'){
   return `
     <div class="proj-media split-media">
       <div class="split-top">
@@ -67,11 +67,11 @@ function splitViewerImageBlock(wrapId, emptyId, hint){
         </div>
       </div>
       <div class="split-bottom">
-        <img alt="" src="public/CustomDisplay.png">
+        <img alt="" src="${imgSrc}">
       </div>
     </div>`;
 }
-
+ 
 function mediaBlock(tag){
   return `
     <div class="proj-media">
@@ -83,7 +83,7 @@ function mediaBlock(tag){
       </div>
     </div>`;
 }
-
+ 
 // click-to-play YouTube embed. Shows a thumbnail + play button until clicked,
 // then swaps in the iframe. Uses youtube-nocookie.com + modestbranding to keep
 // branding minimal (YouTube's terms don't allow removing it entirely).
@@ -101,7 +101,7 @@ function videoBlock(tag, videoId){
       </div>
     </div>`;
 }
-
+ 
 function playVideo(videoId){
   const container = document.getElementById(`video-${videoId}`);
   if (!container) return;
@@ -111,12 +111,12 @@ function playVideo(videoId){
       allowfullscreen></iframe>`;
 }
 window.playVideo = playVideo;
-
+ 
 function mediaBlock1(tag){
   return `
     <div class="proj-media">
       <span class="media-tag">${tag}</span>
-
+ 
       <img 
         alt="Research Paper"
         src="public/ResearchPaper.png"
@@ -129,7 +129,7 @@ function mediaBlock1(tag){
         "
         onload="this.nextElementSibling.style.display='none'"
       >
-
+ 
       <div class="media-empty">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
           <rect x="3" y="4" width="18" height="16" rx="2"/>
@@ -140,7 +140,7 @@ function mediaBlock1(tag){
       </div>
     </div>`;
 }
-
+ 
 function mediaBlock2(tag){
   return `
     <div class="proj-media">
@@ -152,9 +152,9 @@ function mediaBlock2(tag){
       </div>
     </div>`;
 }
-
+ 
 const stage = document.getElementById('stage');
-
+ 
 stage.innerHTML = `
   <div class="slide active" data-index="0">
     <div class="intro-slide">
@@ -171,7 +171,7 @@ stage.innerHTML = `
         <span class="eyebrow">Portfolio</span>
         <div class="intro-title" contenteditable="true" spellcheck="false">Hi, I'm <br>Henry Zhang</div>
         <div class="intro-subtitle" contenteditable="true" spellcheck="false">University of Texas @ Austin <br> BS in Electrical + Computer Engineering</div>
-        <div class="intro-desc" contenteditable="true" spellcheck="false">Outside of the professional world, I like to cook, play sports, go hiking, <br>and I'm also not short, which is pretty cool.</div>
+        <div class="intro-desc" contenteditable="true" spellcheck="false">Outside of engineering, I like to cook, play sports, go hiking, write music, <br>and I'm also not short, which is pretty cool.</div>
         <div class="intro-links">
           <span class="link-chip" contenteditable="true" spellcheck="false">henry.zhang@utexas.edu</span>
           <span class="link-chip" contenteditable="true" spellcheck="false">linkedin.com/in/hzhang-y</span>
@@ -186,7 +186,7 @@ stage.innerHTML = `
       <div class="proj-body">
         <span class="eyebrow">01 — Longhorns Racing</span>
         <div class="proj-title" contenteditable="true" spellcheck="false">Custom Display-PCB</div>
-        <div class="proj-role" contenteditable="true" spellcheck="false">Created to replace former factory-made racing equipment</div>
+        <div class="proj-role" contenteditable="true" spellcheck="false">Interactive 3D Viewer and PCB Design on Left</div>
         <div class="proj-desc" contenteditable="true" spellcheck="false">- Reverse-engineered an STM32U5-based Riverdi display to enable development of a custom vehicle display system,
 decreased bill of materials cost by $850 and improved power consumption efficiency by 40%
         <br> - Designed the schematic for a custom display PCB, utilizing OCTOSPI/SPI for external flash/DRAM
@@ -205,11 +205,15 @@ automotive power conditions</div>
       ${videoBlock('Video', 'QhCHJiEkqpw')}
       <div class="proj-body">
         <span class="eyebrow">02</span>
-        <div class="proj-title" contenteditable="true" spellcheck="false">Voice Control Lamp Through Fast Fourier Transform</div>
-        <div class="proj-role" contenteditable="true" spellcheck="false">Role or project type</div>
-        <div class="proj-desc" contenteditable="true" spellcheck="false">This is a sample text. Insert your desired description here — what you built, why it mattered, and the impact it had.</div>
+        <div class="proj-title" contenteditable="true" spellcheck="false">Voice Control Lamp with Fast Fourier Transform</div>
+        <div class="proj-role" contenteditable="true" spellcheck="false">Prototype 1 Video on Left</div>
+        <div class="proj-desc" contenteditable="true" spellcheck="false">- Designed and built a sound-driven smart lamp system integrating real-time signal processing with embedded
+            hardware control using Arduino Uno and an MSPM0 microcontroller
+          <br> - Implemented a Radix-2 FFT on an MCU with ADC-sampled electret microphone input to extract frequency
+            components and map audio signals to control logic
+          <br> - Integrated an offline voice recognition module and IoT relay to actuate a high-voltage lamp from low-power control</div>
         <span class="proj-desc-label">Tools used</span>
-        <div class="tools-row" id="tools-2">${editableTools(['Figma','React','Node.js'])}</div>
+        <div class="tools-row" id="tools-2">${editableTools(['Embedded Systems Design + Programming','Hardware & Power Interfacing','C/C++'])}</div>
       </div>
     </div>
     <div class="slide-num-mark">02 / 06</div>
@@ -219,12 +223,17 @@ automotive power conditions</div>
     <div class="project-slide">
       ${viewerBlock('viewerWrap2', 'viewerEmpty2', 'Set MODEL_PATH_PROJECT_3 in viewer.js to point at your .glb file.')}
       <div class="proj-body">
-        <span class="eyebrow">03</span>
+        <span class="eyebrow">03 - Dr. Linran Fan Group</span>
         <div class="proj-title" contenteditable="true" spellcheck="false">CAD and PCB Design for a Quantum Computer</div>
-        <div class="proj-role" contenteditable="true" spellcheck="false">Interactive 3D Model Viewer</div>
-        <div class="proj-desc" contenteditable="true" spellcheck="false">Describe this project here — the problem, your approach, and the outcome. The panel on the left renders your 3D model directly in the browser.</div>
+        <div class="proj-role" contenteditable="true" spellcheck="false">Interactive 3D Viewer of CAD Model on Left</div>
+        <div class="proj-desc" contenteditable="true" spellcheck="false">- Developed CAD models of a superconducting quantum computing system to resolve component interference and
+            ensure mechanical compatibility for future system integration
+          <br> - Designed a high-frequency low power PCB that is interfaced with a cryogenic RF switch module for multiplexed
+            qubit readout in a size constrained quantum computing system, improved readout throughput by 600%
+          <br> - Collaborating on the integration of cryogenic and RF subsystems for on-chip quantum photonic experiments,
+            supporting scalable qubit control and measurement</div>
         <span class="proj-desc-label">Tools used</span>
-        <div class="tools-row" id="tools-3">${editableTools(['Sketch','Swift','Firebase'])}</div>
+        <div class="tools-row" id="tools-3">${editableTools(['CAD','High-Frequency PCB Design','I was able to touch an actual quantum computer which was really cool'])}</div>
       </div>
     </div>
     <div class="slide-num-mark">03 / 06</div>
@@ -234,12 +243,17 @@ automotive power conditions</div>
     <div class="project-slide">
       ${mediaBlock1('Image')}
       <div class="proj-body">
-        <span class="eyebrow">04</span>
+        <span class="eyebrow">04 - Dr. Cheng Guo Group</span>
         <div class="proj-title" contenteditable="true" spellcheck="false">Lead Author of a 1D Quantum/Photonics Scattering Paper</div>
-        <div class="proj-role" contenteditable="true" spellcheck="false">Role or project type</div>
-        <div class="proj-desc" contenteditable="true" spellcheck="false">This is a sample text. Insert your desired description here — what you built, why it mattered, and the impact it had.</div>
+        <div class="proj-role" contenteditable="true" spellcheck="false">Excerpt from the Paper on Left</div>
+        <div class="proj-desc" contenteditable="true" spellcheck="false">- Leading authorship of a research paper on 1D wave scattering in photonic and quantum systems, applying the
+            Transfer Matrix Method to model thin-film device behavior
+          <br> - Developed a Python-based simulation tool to model wave propagation through multilayer thin-film structures to
+            observe the effects of changing potential have on reflected and transmitted waves
+          <br> - Analyzed interference and impedance-like effects across layered media to inform design tradeoffs for optical
+            components and photonic device integration</div>
         <span class="proj-desc-label">Tools used</span>
-        <div class="tools-row" id="tools-4">${editableTools(['Python','Pandas','Plotly'])}</div>
+        <div class="tools-row" id="tools-4">${editableTools(['Python','Research','A lot of math'])}</div>
       </div>
     </div>
     <div class="slide-num-mark">04 / 06</div>
@@ -247,26 +261,28 @@ automotive power conditions</div>
 
   <div class="slide" data-index="5">
     <div class="project-slide">
-      ${mediaBlock2('Image')}
+      ${splitViewerImageBlock('viewerWrap3', 'viewerEmpty3', 'Set MODEL_PATH_PROJECT_5 in viewer.js to point at your .glb file.', 'public/cat_lying.jpg')}
       <div class="proj-body">
         <span class="eyebrow">05</span>
-        <div class="proj-title" contenteditable="true" spellcheck="false">3D Reconstruction through 2D Imaging Pipeline</div>
-        <div class="proj-role" contenteditable="true" spellcheck="false">Role or project type</div>
-        <div class="proj-desc" contenteditable="true" spellcheck="false">This is a sample text. Insert your desired description here — what you built, why it mattered, and the impact it had.</div>
+        <div class="proj-title" contenteditable="true" spellcheck="false">USEYA Intern</div>
+        <div class="proj-role" contenteditable="true" spellcheck="false">3D Reconstruction through 2D Imaging Pipeline on Left</div>
+        <div class="proj-desc" contenteditable="true" spellcheck="false">- Engineered and integrated a custom 3D-printed robotic hand with microcontroller-based actuation and sensor feedback, achieving reliable object manipulation through closed-loop control
+          <br> - Designed and implemented a vision-guided robotic gripper using OpenCV-based object detection, ROS Noetic, MoveIt, RVis, and Gazebo, allowing precise object manipulation
+          <br> - Developed a full-stack 2D-to-3D reconstruction pipeline using the Hunyuan API, Docker, a Python Backend, and a TypeScript Frontend, enabling automated image-to-mesh generation</div>
         <span class="proj-desc-label">Tools used</span>
-        <div class="tools-row" id="tools-5">${editableTools(['After Effects','Cinema 4D'])}</div>
+        <div class="tools-row" id="tools-5">${editableTools(['Full Stack Development','Robotics + Embedded Systems Integration', 'Computer Vision System Design'])}</div>
       </div>
     </div>
     <div class="slide-num-mark">05 / 06</div>
   </div>
 `;
-
+ 
 const slideEls = [...document.querySelectorAll('.slide')];
 const thumbEls = [...document.querySelectorAll('.thumb')];
 const navCount = document.getElementById('navCount');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-
+ 
 function goTo(i){
   current = Math.max(0, Math.min(SLIDES.length - 1, i));
   slideEls.forEach(el => el.classList.toggle('active', +el.dataset.index === current));
@@ -279,18 +295,18 @@ function goTo(i){
 thumbEls[0].classList.add('active');
 prevBtn.addEventListener('click', () => goTo(current - 1));
 nextBtn.addEventListener('click', () => goTo(current + 1));
-
+ 
 document.addEventListener('keydown', (e) => {
   if (document.activeElement && document.activeElement.isContentEditable) return;
   if (e.key === 'ArrowRight' || e.key === 'PageDown') goTo(current + 1);
   if (e.key === 'ArrowLeft' || e.key === 'PageUp') goTo(current - 1);
   if (e.key === 'Escape') exitPresentMode();
 });
-
+ 
 const appEl = document.getElementById('app');
 document.getElementById('slideshowBtn').addEventListener('click', enterPresentMode);
 document.getElementById('exitPresent').addEventListener('click', exitPresentMode);
-
+ 
 function enterPresentMode(){
   appEl.classList.add('presenting');
   document.documentElement.requestFullscreen?.().catch(()=>{});
@@ -303,7 +319,7 @@ function exitPresentMode(){
 document.addEventListener('fullscreenchange', () => {
   if (!document.fullscreenElement) appEl.classList.remove('presenting');
 });
-
+ 
 function addTool(btn){
   const chip = document.createElement('span');
   chip.className = 'tool-chip';

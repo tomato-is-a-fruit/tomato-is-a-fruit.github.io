@@ -5,6 +5,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 const MODEL_PATH_PROJECT_1 = 'public/LHRCustomScreen.glb';
 const MODEL_PATH_PROJECT_3 = 'public/Cryostat_TLA.glb';
+const MODEL_PATH_PROJECT_5 = 'public/cat_lying.glb';
 
 function createViewer(wrapId, emptyId, modelPath){
   const wrap = document.getElementById(wrapId);
@@ -143,3 +144,4 @@ function createViewer(wrapId, emptyId, modelPath){
 
 createViewer('viewerWrap', 'viewerEmpty', MODEL_PATH_PROJECT_1);
 createViewer('viewerWrap2', 'viewerEmpty2', MODEL_PATH_PROJECT_3);
+createViewer('viewerWrap3', 'viewerEmpty3', MODEL_PATH_PROJECT_5);
